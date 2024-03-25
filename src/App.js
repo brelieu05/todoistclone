@@ -15,7 +15,8 @@ function App() {
   };
 
   const updateTaskArray = (value) => {
-    setTasks([...tasks, value]);
+    if(value.trim() !== "")
+      setTasks([...tasks, value]);
   };
 
   const deleteTask = (index) => {
@@ -38,9 +39,17 @@ function App() {
       {buttonPressed ? 
         <InputBox updateButtonPressed={updateButtonPressed} updateTaskArray={updateTaskArray}/>
         :
-        <HStack>
-            <IconButton icon={<AddIcon />} onClick={() => setButtonPressed(true)} variant='outline' colorScheme='red' isRound={true} sx={{ border: 'none', bg: 'transparent', '&:hover': { bg: 'red.400', color:"white" }, }}/>
-            <Text onClick={() => setButtonPressed(true)} fontSize='lg' color='gray' sx={{ border: 'none', bg: 'transparent', '&:hover': { color:"red.400" }, }}>Add Task </Text>
+        <HStack sx={{
+          '&:hover > button': {
+            bg: 'red.400',
+            color: 'white', // Change color on hover
+          },
+          '&:hover > p': {
+            color: 'red.400', // Change color on hover
+          },
+        }}>
+            <IconButton icon={<AddIcon />} onClick={() => setButtonPressed(true)} variant='outline' colorScheme='red' isRound={true} sx={{ border: 'none', bg: 'transparent', }}/>
+            <Text onClick={() => setButtonPressed(true)} fontSize='lg' color='gray' sx={{ border: 'none', bg: 'transparent', }}>Add Task </Text>
         </HStack>
       }
       </Stack>
