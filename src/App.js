@@ -30,7 +30,7 @@ function App() {
 
   return (
     <VStack h='100vh' bg='#1e1e1e'> 
-      <Calendar/>  
+      <Calendar year={2024}/>  
       <Stack pt='10'  w='4xl'>
       <Text fontSize='5xl' as='b' color='white'>Today</Text>
       <ul>
