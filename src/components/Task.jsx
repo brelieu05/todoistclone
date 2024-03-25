@@ -11,9 +11,12 @@ function Task({task, description, index, deleteTask }){
       bg="transparent"
 
       onClick={() => {deleteTask(index)}}
-    />
-        <Text color='white' fontSize='lg'>{task}</Text>   
-      
+    />  
+      <VStack alignItems="flex-start">
+        <Text color='white' fontSize='lg'>{task.task}</Text>   
+        <Text color='white' fontSize='lg'>{task.description}</Text> 
+      </VStack>
+          
       <Spacer/>
     </HStack>
   );

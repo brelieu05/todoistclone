@@ -1,10 +1,12 @@
 import { CalendarIcon, BellIcon, WarningIcon, EmailIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { Stack, Input, Button, HStack, Spacer, Text, IconButton,} from "@chakra-ui/react";
 import { useState } from "react";
+import DatePicker from 'react-datepicker';
 
 function InputBox({updateButtonPressed, updateTaskArray}) {
 
   const [taskInput, setTaskInput] = useState('');
+  const [descriptionInput, setDescriptionInput] = useState('');
 
   return (
     <>    
@@ -13,14 +15,17 @@ function InputBox({updateButtonPressed, updateTaskArray}) {
           <Input
             bg='none'
             placeholder='Add Task'
-            sx={{ fontWeight: 'bold', fontSize: 'lg', color:'white' }}
+            color='white'
+            sx={{ fontWeight: 'bold', fontSize: 'lg'}}
             onChange={(e) => setTaskInput(e.target.value)}
+            
           />
           <Input
             bg='none'
             placeholder='Description'
             sx={{fontSize: 'lg' }}
             color='white'
+            onChange={(e) => setDescriptionInput(e.target.value)}
           />
           <HStack>
             <Button leftIcon={<CalendarIcon/>} bg='none' color='green.400' borderWidth="1px" borderColor="gray.400">Today</Button>
@@ -37,7 +42,11 @@ function InputBox({updateButtonPressed, updateTaskArray}) {
             updateButtonPressed(false);
           }}>Cancel</Button>
           <Button colorScheme='red' onClick={() => {
-            updateTaskArray(taskInput);
+            const newTask = {
+              task: taskInput,
+              description: descriptionInput,
+            };
+            updateTaskArray(newTask);
             updateButtonPressed(false);
           }}>Add Task</Button>
         </HStack>

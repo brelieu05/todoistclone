@@ -5,6 +5,8 @@ import { AddIcon } from '@chakra-ui/icons';
 import { IconButton, CalendarIcon} from '@chakra-ui/react'
 import InputBox from './components/InputBox';
 import Task from './components/Task';
+import Calendar from './components/Calendar';
+
 function App() {
 
   const [buttonPressed, setButtonPressed] = useState(false);
@@ -15,7 +17,7 @@ function App() {
   };
 
   const updateTaskArray = (value) => {
-    if(value.trim() !== "")
+    if(value.task.trim() !== "")
       setTasks([...tasks, value]);
   };
 
@@ -27,10 +29,10 @@ function App() {
   };
 
   return (
-    <VStack h='100vh' bg='#1e1e1e'>   
+    <VStack h='100vh' bg='#1e1e1e'> 
+      <Calendar/>  
       <Stack pt='10'  w='4xl'>
       <Text fontSize='5xl' as='b' color='white'>Today</Text>
-      
       <ul>
         {tasks.map((task, index) => (
           <Task key={index} index={index} task={task} deleteTask={deleteTask}/>
