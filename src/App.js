@@ -1,11 +1,10 @@
-import { VStack, Text, Input, Button, HStack, Stack, Spacer} from '@chakra-ui/react';
+import { VStack, Text, HStack, Stack} from '@chakra-ui/react';
 import './App.css';
 import { useState } from 'react';
 import { AddIcon } from '@chakra-ui/icons';
-import { IconButton, CalendarIcon} from '@chakra-ui/react'
+import { IconButton} from '@chakra-ui/react'
 import InputBox from './components/InputBox';
 import Task from './components/Task';
-import Calendar from './components/Calendar';
 
 function App() {
 
@@ -27,10 +26,8 @@ function App() {
     });
     setTasks(filtered);
   };
-
   return (
     <VStack h='100vh' bg='#1e1e1e'> 
-      <Calendar year={2024}/>  
       <Stack pt='10'  w='4xl'>
       <Text fontSize='5xl' as='b' color='white'>Today</Text>
       <ul>
